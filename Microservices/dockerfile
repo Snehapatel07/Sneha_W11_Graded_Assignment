@@ -1,0 +1,20 @@
+#deveopment has python 3.0
+FROM python:3.10-slim
+
+#Setting Working Directory
+WORKDIR /app
+
+#copying to container
+COPY . /app
+
+#installing all requiremnt libraries
+RUN pip install -r requiremnts.txt 
+
+#exposing port outside of container
+EXPOSE 8000
+
+#taking environment
+ENV NAME env
+
+CMD ["gunicorn", "app:app", "b", "0.0.0.0.8000" ]
+
